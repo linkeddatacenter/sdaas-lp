@@ -1,0 +1,10 @@
+.git
+.gitignore
+**.project
+**.settings
+vendor
+.phpunit.result.cache
+.buildcache
+.buildpath
+codefresh.yaml
+README.md
