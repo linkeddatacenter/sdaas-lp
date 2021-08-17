@@ -1,6 +1,6 @@
 <?php 
 header('Content-Type: text/turtle');
-include __DIR__."/voidHeader.php";
+include __DIR__."/header.ttl";
 
 $scheme = $_GET["scheme"] ?? "http";
 $host= $_GET["host"] ?? "lp";
