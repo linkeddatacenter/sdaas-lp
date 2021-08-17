@@ -17,15 +17,15 @@ docker run --rm  -p 80:80 linkeddatacenter:sdaas-lp
 curl -L http://localhost:80/.well-known/void
 ```
 
-Create your customized image substituting the file header.ttl in web root with one of your choice. 
+Create your customized image substituting the file header.php in web root with one of your choice. 
 
 ```
 FROM linkeddatacenter:sdaas-lp
 
-COPY ./myvoidHeader.ttl /var/www/html/html/header.ttl
+COPY ./myheader.php /var/www/html/html/header.php
 ```
 
-**WARNING: the default prefix : must be defined** see [example](https://github.com/linkeddatacenter/sdaas-lp/blob/main/webroot/voidHeader.php)
+**WARNING: the default prefix : must be defined** see [example](https://github.com/linkeddatacenter/sdaas-lp/blob/main/webroot/header.php)
 
 
 # Developers
