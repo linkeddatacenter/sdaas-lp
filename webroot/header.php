@@ -1,5 +1,5 @@
 ################################################
-# (c) 2021 linkeddata.center
+# (c) 2022 linkeddata.center
 ################################################
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
