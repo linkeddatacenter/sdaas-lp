@@ -13,7 +13,7 @@ Just access the URI */.well-known/void* in the root of the web server.
 # Quickstart
 
 ```
-docker run -d --name test-lp -p 80:80 -v "${PWD}/tests/data":/var/www/html/data linkeddatacenter/sdaas-lp:1.0.1
+docker run -d --name test-lp -p 80:80 -v "${PWD}/tests/data":/var/www/html/data linkeddatacenter/sdaas-lp:1.0.2
 curl -L http://localhost:80/.well-known/void
 docker rm -f test-lp
 ```
@@ -21,7 +21,7 @@ docker rm -f test-lp
 Create your customized image substituting the file header.php in web root with one of your choice. 
 
 ```
-FROM linkeddatacenter/sdaas-lp:1.0.1
+FROM linkeddatacenter/sdaas-lp:1.0.2
 
 COPY ./myheader.php /var/www/html/html/header.php
 ```
@@ -67,9 +67,9 @@ To push a new docker image to docker hub:
 docker login
 # input the docker hub credentials...
 docker build -t linkeddatacenter/sdaas-lp .
-docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:1.0.1
+docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:1.0.2
 docker push linkeddatacenter/sdaas-lp
-docker push linkeddatacenter/sdaas-lp:1.0.1
+docker push linkeddatacenter/sdaas-lp:1.0.2
 ```
 
 
