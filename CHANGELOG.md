@@ -4,6 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## unreleased
 
+## 1.1.0
+
+### changed
+- issue #2 now runs as www-data user (not root)
+
+### fixed
+- issue #3 : creates data/rdf dir if not exists
+
 
 ## 1.0.3
 
