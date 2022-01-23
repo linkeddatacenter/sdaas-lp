@@ -21,7 +21,7 @@ docker rm -f test-lp
 Create your customized image substituting the file header.php in web root with one of your choice. 
 
 ```
-FROM linkeddatacenter/sdaas-lp:1.0.2
+FROM linkeddatacenter/sdaas-lp:1.1.1
 
 COPY ./myheader.php /var/www/html/html/header.php
 ```
@@ -67,9 +67,9 @@ To push a new docker image to docker hub:
 docker login
 # input the docker hub credentials...
 docker build -t linkeddatacenter/sdaas-lp .
-docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:1.1.0
+docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:1.1.1
 docker push linkeddatacenter/sdaas-lp
-docker push linkeddatacenter/sdaas-lp:1.1.0
+docker push linkeddatacenter/sdaas-lp:1.1.1
 ```
 
 

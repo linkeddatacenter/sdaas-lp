@@ -4,6 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## unreleased
 
+
+## 1.1.1
+
+### fixed
+- issue #4 : rewind... https should run as root
+
+### changed
+- issue #2 now runs as www-data user (not root)
+
 ## 1.1.0
 
 ### changed

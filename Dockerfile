@@ -7,5 +7,4 @@ RUN mkdir -p /var/www/html/data/rdf && chown -R www-data.www-data /var/www/html/
 
 RUN a2enmod rewrite
 
-USER www-data
 
