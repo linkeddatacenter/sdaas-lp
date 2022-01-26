@@ -13,7 +13,7 @@ Just access the URI */.well-known/void* in the root of the web server.
 # Quickstart
 
 ```
-docker run -d --name test-lp -p 80:80 -v "${PWD}/tests/data":/var/www/html/data linkeddatacenter/sdaas-lp:1.0.2
+docker run -d --name test-lp -p 80:80 -v "${PWD}/tests/data":/var/www/html/data linkeddatacenter/sdaas-lp
 curl -L http://localhost:80/.well-known/void
 docker rm -f test-lp
 ```
