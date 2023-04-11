@@ -5,6 +5,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## unreleased
 
 
+
+## 2.0.0
+
+### changed
+- php version moved to 8.2
+- the knowledge base dct:modified attribute now takes into consideration also file deletion in dir and subdirs
+- the uri of the datalake is fixed to <urn:sdaas:lp:datalake> 
+
+### removed
+- inclusion of header.php
+
 ## 1.1.1
 
 ### fixed

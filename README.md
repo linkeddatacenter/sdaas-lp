@@ -1,8 +1,8 @@
 ![logo](http://linkeddata.center/resources/v4/logo/Logo-colori-trasp_oriz-640x220.png)
 
-# A Linked Data proxy
+# A Linked Data lake proxy
 
-A super simple Linked Data Proxy for SDaaS application. It is based on the official php:8-apache docker image
+A super simple Linked Data lake Proxy for SDaaS application. It is based on the official php:8-apache docker image
 
 It allows the discovery of all rdf data dumps (i.e. files with .ttl, .nt, and .rdf extensions) contained in the directory data/rdf
 according with the [void well-known uri specification](https://www.w3.org/TR/void/#well-known).
@@ -18,23 +18,12 @@ curl -L http://localhost:80/.well-known/void
 docker rm -f test-lp
 ```
 
-Create your customized image substituting the file header.php in web root with one of your choice. 
-
-```
-FROM linkeddatacenter/sdaas-lp:1.1.1
-
-COPY ./myheader.php /var/www/html/html/header.php
-```
-
-**WARNING: the default prefix : must be defined** see [example](https://github.com/linkeddatacenter/sdaas-lp/blob/main/webroot/header.php)
-
-
 # Developers
 
 Run functional tests:
 
 ```
-docker run -d --name lp -p 80:80 -v "${PWD}":/app --workdir /app php:8-apache
+docker run -d --name lp -p 80:80 -v "${PWD}":/app --workdir /app php:8.2-apache
 docker exec -ti lp bash
 ln -sf /app/webconf/host.conf /etc/apache2/sites-enabled/000-default.conf && \
 ln -sf /app/webroot/* /var/www/html/ && \
@@ -57,19 +46,15 @@ if [ $(curl -L http://localhost:8080/.well-known/void  | wc -l) -eq 23 ]; then e
 docker rm -f lp && docker image rm lp
 ```
 
-A new docker image is automatically pushed on any successfully commit to master branch by codefresh.yaml script.
-
-
-
 To push a new docker image to docker hub:
 
 ```
 docker login
 # input the docker hub credentials...
 docker build -t linkeddatacenter/sdaas-lp .
-docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:1.1.1
+docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:2.0.0
 docker push linkeddatacenter/sdaas-lp
-docker push linkeddatacenter/sdaas-lp:1.1.1
+docker push linkeddatacenter/sdaas-lp:2.0.0
 ```
 
 
