@@ -6,6 +6,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## 2.0.1
+
+### Fixed
+- issue #5 (void.ttl should be in root)
+
 ## 2.0.0
 
 ### changed

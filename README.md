@@ -12,13 +12,12 @@ Just access the URI */.well-known/void* in the root of the web server.
 
 # Quickstart
 
+Test latest version
 ```
 docker run -d --name test-lp -p 80:80 -v "${PWD}/tests/data":/var/www/html/data linkeddatacenter/sdaas-lp
 curl -L http://localhost:80/.well-known/void
 docker rm -f test-lp
 ```
-
-# Developers
 
 Run functional tests:
 
@@ -31,7 +30,6 @@ ln -sf /app/tests/data /var/www/html/data && \
 a2enmod rewrite
 service apache2 reload
 
-# To run functional tests:
 apt-get update -y && apt-get install -y bats raptor2-utils
 bats tests/functional
 exit
@@ -52,9 +50,9 @@ To push a new docker image to docker hub:
 docker login
 # input the docker hub credentials...
 docker build -t linkeddatacenter/sdaas-lp .
-docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:2.0.0
+docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:2.0.1
 docker push linkeddatacenter/sdaas-lp
-docker push linkeddatacenter/sdaas-lp:2.0.0
+docker push linkeddatacenter/sdaas-lp:2.0.1
 ```
 
 
