@@ -48,6 +48,8 @@ foreach ($dirs as $dir) {
     $dirTimeStamp = filemtime($dir);
     $lastUpdatedDirTimeStamp = max($lastUpdatedDirTimeStamp,$dirTimeStamp);
 }
-$lastUpdated= date('c',$lastUpdatedDirTimeStamp);
+
+// the data lake uri modification time is teìhe max between file and dir uupdate
+$lastUpdated= date('c',max( $lastUpdatedDirTimeStamp, $newestFileTimeStamp));
 echo "#### \n";
 echo "<$dataLakeURI> dct:modified \"$lastUpdated\"^^xsd:dateTime." . PHP_EOL;

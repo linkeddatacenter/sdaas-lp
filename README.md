@@ -50,9 +50,9 @@ To push a new docker image to docker hub:
 docker login
 # input the docker hub credentials...
 docker build -t linkeddatacenter/sdaas-lp .
-docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:2.0.1
+docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:2.1.0
 docker push linkeddatacenter/sdaas-lp
-docker push linkeddatacenter/sdaas-lp:2.0.1
+docker push linkeddatacenter/sdaas-lp:2.1.0
 ```
 
 

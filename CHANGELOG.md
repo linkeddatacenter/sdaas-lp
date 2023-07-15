@@ -4,7 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## unreleased
 
+## 2.1.0
 
+### Changed
+- last update for the datalake take into consideration both file and dir changes
 
 ## 2.0.1
 
