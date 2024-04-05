@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+
+  lp:
+    image: lp
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./webroot:/var/www/html
+      - ./tests/data:/var/www/html/data
+      - ./tests/functional:/app/tests/functional
+  

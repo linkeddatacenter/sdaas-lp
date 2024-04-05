@@ -12,53 +12,32 @@ Just access the URI */.well-known/void* in the root of the web server.
 
 # Quickstart
 
-Test latest version
 ```
-docker run -d --name test-lp -p 80:80 -v "${PWD}/tests/data":/var/www/html/data linkeddatacenter/sdaas-lp
-curl -L http://localhost:80/.well-known/void
-docker rm -f test-lp
-```
-
-Run functional tests:
-
-```
-docker run -d --name lp -p 80:80 -v "${PWD}":/app --workdir /app php:8.2-apache
-docker exec -ti lp bash
-ln -sf /app/webconf/host.conf /etc/apache2/sites-enabled/000-default.conf && \
-ln -sf /app/webroot/* /var/www/html/ && \
-ln -sf /app/tests/data /var/www/html/data && \
-a2enmod rewrite
-service apache2 reload
-
+docker compose up -d --build
+curl -L http://localhost/.well-known/void
 apt-get update -y && apt-get install -y bats raptor2-utils
-bats tests/functional
+bats /app/tests/functional
 exit
-docker rm -f lp
+if [ $(curl -L http://localhost/.well-known/void  | wc -l) -eq 23 ]; then echo "INTEGRATION TEST FAILED"; else echo "INTEGRATION OK"; fi
+docker compose down
 ```
 
-Run integration tests:
-
-```
-docker build -t lp . && docker run -d --name lp -p 8080:80  lp && sleep 2
-if [ $(curl -L http://localhost:8080/.well-known/void  | wc -l) -eq 23 ]; then echo "INTEGRATION TEST FAILED"; else echo "INTEGRATION OK"; fi
-docker rm -f lp && docker image rm lp
-```
+## Push to docker hub
 
 To push a new docker image to docker hub:
 
 ```
-docker login
-# input the docker hub credentials...
-docker build -t linkeddatacenter/sdaas-lp .
-docker tag linkeddatacenter/sdaas-lp linkeddatacenter/sdaas-lp:2.1.0
-docker push linkeddatacenter/sdaas-lp
-docker push linkeddatacenter/sdaas-lp:2.1.0
+# docker login
+# docker buildx create --name multi-arch-builder
+
+NAME="linkeddatacenter/sdaas-lp" MAJOR="2" MINOR="1" PATCH="1"
+docker buildx build --builder multi-arch-builder  --platform linux/arm64,linux/amd64 --build-arg MODE=prod --push -t $NAME:$MAJOR.$MINOR.$PATCH .
 ```
 
 
 ## Credits and license
 
-Copyright (C) 2018-2022 LinkedData.Center SRL
+Copyright (C) 2018-2024 LinkedData.Center SRL
  - All Rights Reserved
  
 Permission to copy and modify is granted under the [MIT license](LICENSE)
